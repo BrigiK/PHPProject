@@ -1,3 +1,26 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+app_login:
+  path: /login
+  controller: App\Controller\SecurityController:login
+
+app_logout:
+  path: /logout
+
+app_addbook:
+  path: /admin/addbook
+  controller: App\Controller\AddBookController:addBook
+
+app_addauthor:
+  path: /admin/addauthor
+  controller: App\Controller\AddAuthorController:addAuthor
+
+app_addpublisher:
+  path: /admin/addpublisher
+  controller: App\Controller\AddPublisherController:addPublisher
+
+app_borrowbook:
+  path: /borrowbook
+  controller: App\Controller\BorrowBookController:borrowBook

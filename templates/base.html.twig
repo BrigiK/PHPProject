@@ -6,6 +6,30 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    
+        <div class="container">
+            <div class="header">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        {% if active in ['main', 'login', 'register'] %}
+                            <li role="presentation" {% if active == 'main' %} class="active"{% endif %}><a href="/main/page">Home</a></li>
+                            <li role="presentation" {% if active == 'login' %} class="active"{% endif %}><a href="/login">Sign In</a></li>
+                            <li role="presentation" {% if active == 'register' %} class="active"{% endif %}><a href="/register">Sign Up</a></li>
+                        {% else %}
+                            <li role="presentation" {% if active == 'home' %} class="active"{% endif %}><a href="/user/home">Home</a></li>
+                            <li role="presentation" {% if active == 'borrow' %} class="active"{% endif %}><a href="{{ path('app_borrowbook') }}">Borrow book</a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li role="presentation" {% if active == 'book' %} class="active"{% endif %}><a href="{{ path('app_addbook') }}">Add new book</a></li>
+                                <li role="presentation" {% if active == 'author' %} class="active"{% endif %}><a href="{{ path('app_addauthor') }}">Add new author</a></li>
+                                <li role="presentation" {% if active == 'publisher' %} class="active"{% endif %}><a href="{{ path('app_addpublisher') }}">Add new publisher</a></li>
+                            {% endif %}
+                            <li role="presentation" ><a href="{{ path('app_logout') }}">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <h3 class="text-muted">Online Library</h3>
+            </div>
+        </div>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

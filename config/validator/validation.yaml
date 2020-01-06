@@ -1,0 +1,45 @@
+App\Entity\Book:
+    properties:
+        title:
+            - NotBlank: ~
+        year:
+            - NotBlank: ~
+            - Range:
+                min: 1
+                max: 2020
+                minMessage: We do not count years before year {{ limit }}
+                maxMessage: The book aparition date cannot be greater than the current year ({{ limit }})
+        nr_of_books:
+            - NotBlank: ~
+        image:
+            - NotBlank: ~
+            - Url:
+                message: This must be a valid URL
+        genre:
+            - NotBlank: ~
+        rating:
+            - NotBlank: ~
+            - Range:
+                min: 0
+                max: 5
+                minMessage: Rating can not be smaller than {{ limit }}
+                maxMessage: Rating can not be greater than {{ limit }}
+        description:
+            - NotBlank: ~
+        reviews:
+            - NotBlank: ~
+        nrOfPages:
+            - NotBlank: ~
+App\Entity\Author:
+  properties:
+    name:
+      - NotBlank: ~
+
+App\Entity\Publisher:
+  properties:
+    title:
+      - NotBlank: ~
+    address:
+      - NotBlank: ~
+    phone:
+      - NotBlank: ~
